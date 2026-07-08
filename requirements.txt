@@ -20,5 +20,5 @@ pillow
 librosa
 resemblyzer
 
-face_recognition_models
+
 
