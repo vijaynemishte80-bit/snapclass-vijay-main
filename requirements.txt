@@ -17,5 +17,5 @@ segno
 pillow
 
 
-librosa
-resemblyzer
+librosa=0.10.2.post1
+resemblyzer==0.1.4
