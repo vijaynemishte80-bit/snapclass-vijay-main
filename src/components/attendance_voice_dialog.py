@@ -6,7 +6,7 @@ from src.components.attendance_result_dialog import show_attendance_result
 import pandas as pd
 
 
-@st.dialog("Voice Attendamce")
+@st.dialog("Voice Attendance")
 def voice_attendance_dialog(selected_subject_id):
     st.header("Record audio of the students then Ai will recognize these audio")
 
