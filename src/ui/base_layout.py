@@ -17,7 +17,7 @@ def style_background_home():
         </style>
          """,unsafe_allow_html=True)
 
-def style_base_dashboard():
+def style_background_dashboard():
     st.markdown("""
        <style>
                 .stApp{
@@ -28,11 +28,12 @@ def style_base_dashboard():
 
 
 def style_base_layout():
+# asdscd
     st.markdown("""
        <style>
         @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-                
+               
         /* Hide Toolbar of streamlit*/
                 #MainMenu,footer,header{
                   visibility:hidden;        
@@ -66,7 +67,7 @@ def style_base_layout():
 
             button{
                 border-radius:1.5rem !important;
-                background: #5B65F2 !important;
+                background-color: #5B65F2 !important;
                 color: white !important;
                 padding: 10px 20px !important;
                 border: none !important;
@@ -75,7 +76,7 @@ def style_base_layout():
                 
              button[kind="secondary"]{
                 border-radius:1.5rem !important;
-                background: #EB459E !important;
+                background-color: #EB459E !important;
                 color: white !important;
                 padding: 10px 20px !important;
                 border: none !important;
@@ -84,7 +85,7 @@ def style_base_layout():
 
              button["tertiary"]{
                 border-radius:1.5rem !important;
-                background: black !important;
+                background-color: black !important;
                 color: white !important;
                 padding: 10px 20px !important;
                 border: none !important;
