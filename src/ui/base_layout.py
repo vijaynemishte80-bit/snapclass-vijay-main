@@ -83,7 +83,7 @@ def style_base_layout():
                 transition: transform 0.25s ease-in-out !important;
                 }  
 
-             button["tertiary"]{
+             button[kind="tertiary"]{
                 border-radius:1.5rem !important;
                 background-color: black !important;
                 color: white !important;
