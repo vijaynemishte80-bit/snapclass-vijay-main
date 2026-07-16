@@ -41,7 +41,7 @@ def style_base_layout():
                 }
             
             .block-container{
-               padding-top:1.5rem !imortant;
+               padding-top:1.5rem !important;
                
                 }
 
