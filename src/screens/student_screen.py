@@ -182,8 +182,8 @@ def student_screen():
                     else:
                         st.error("Couldn't capture your facial feature for Registration")
 
-            else:
-                st.warning('Please enter your name')
+                else:
+                    st.warning('Please enter your name')
 
                 
 

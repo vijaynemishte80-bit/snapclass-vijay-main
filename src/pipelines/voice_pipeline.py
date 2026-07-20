@@ -30,7 +30,7 @@ def identity_speaker(new_embedding, candidates_dict, threshold=0.65):
     for sid, stored_embedding in candidates_dict.items():
         if stored_embedding:
             similarity = np.dot(new_embedding, stored_embedding)
-            if similarity>best_score:
+            if similarity > best_score:
                 best_score = similarity
                 best_sid = sid
 
@@ -58,7 +58,7 @@ def process_bulk_audio(audio_bytes,candidates_dict,threshold = 0.65):
 
             sid,score = identity_speaker(embedding,candidates_dict,threshold)
             if sid:
-                if sid not in identified_results or score>identified_results[sid]:
+                if sid not in identified_results or score > identified_results[sid]:
                     identified_results[sid] = score
 
         return identified_results

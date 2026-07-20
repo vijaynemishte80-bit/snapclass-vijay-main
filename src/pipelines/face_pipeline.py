@@ -33,7 +33,7 @@ def get_face_embeddings(image_np):
 
     for face in faces:
         shape = sp(image_np,face)
-        face_descriptor = facerec.compute_face_descriptor(image_np,shape,1)
+        face_descriptor = facerec.compute_face_descriptor(image_np,shape,1) # 128D embedding
 
         encoddings.append(np.array(face_descriptor))
     
@@ -98,7 +98,7 @@ def predicted_attendance(class_image_np):
 
         best_match_score = np.linalg.norm(student_embedding - encoding)
 
-        resemblance_threshold = 0.6
+        resemblance_threshold = 0.5
 
         if best_match_score <= resemblance_threshold:
             detected_students[predicted_id] = True

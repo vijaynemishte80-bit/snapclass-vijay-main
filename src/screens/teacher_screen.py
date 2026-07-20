@@ -14,6 +14,7 @@ from src.components.attendance_voice_dialog import voice_attendance_dialog
 from src.database.db import get_attendance_for_teacher
 from datetime import datetime
 import pandas as pd
+import time
 
 import numpy as np
 
@@ -297,7 +298,6 @@ def teacher_screen_login():
         if st.button("login",icon=':material/passkey:',shortcut='control+enter',width='stretch'):
             if login_teacher(teacher_username,teacher_pass):
                 st.toast("Welcome back!", icon="🖐️")
-                import time
                 time.sleep(1)
                 st.rerun()
             else:
@@ -353,7 +353,6 @@ def teacher_screen_register():
             success,message= register_teacher(teacher_username,teacher_name,teacher_pass,teacher_pass_confirm)
             if success:
                 st.success(message)
-                import time
                 time.sleep(2)
                 st.session_state.teacher_login_type = "login"
                 st.rerun()
