@@ -33,7 +33,7 @@ def get_face_embeddings(image_np):
 
     for face in faces:
         shape = sp(image_np,face)
-        face_descriptor = facerec.compute_face_descriptor(image_np,shape,1) # 128D embedding
+        face_descriptor = facerec.compute_face_descriptor(image_np,shape,10) # 128D embedding
 
         encoddings.append(np.array(face_descriptor))
     
@@ -59,6 +59,7 @@ def get_trained_model():
         return 0
         
     clf = SVC(kernel='linear',probability=True,class_weight='balanced')
+    
 
     try:
         clf.fit(X,y)
@@ -94,11 +95,13 @@ def predicted_attendance(class_image_np):
         else:
             predicted_id = int(all_students[0])
 
+
         student_embedding =X_train[y_train.index(predicted_id)]
 
         best_match_score = np.linalg.norm(student_embedding - encoding)
 
-        resemblance_threshold = 0.5
+        
+        resemblance_threshold = 0.6
 
         if best_match_score <= resemblance_threshold:
             detected_students[predicted_id] = True
