@@ -16,6 +16,14 @@ def main():
     if 'login_type' not in st.session_state:
         st.session_state['login_type']=None
 
+    if st.session_state.get('is_logged_in'):
+        if st.session_state.get('user_role')=='teacher':
+            teacher_screen()
+            return
+        elif st.session_state.get('user_role')=='student':
+            student_screen()
+            return
+
     match st.session_state['login_type']:
         case 'teacher':
             teacher_screen()

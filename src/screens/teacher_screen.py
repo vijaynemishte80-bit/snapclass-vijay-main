@@ -311,7 +311,11 @@ def teacher_screen_login():
 
 
 
-def register_teacher(teacher_username,teacher_name,teacher_pass,teacher_pass_confirm):
+def register_teacher(teacher_username,teacher_name,teacher_pass,teacher_pass_confirm,admin_code):
+    ADMIN_SECRET_CODE = "VJAYSNAPCLASS218274"
+
+    if admin_code != ADMIN_SECRET_CODE:
+        return False,"Invalid admin code! Contact the Administrator to get one"
     if not teacher_username or not teacher_name or not teacher_pass:
         return False,"All fields are required!"
     if check_teacher_exists(teacher_username):
@@ -344,13 +348,14 @@ def teacher_screen_register():
 
     teacher_pass=st.text_input("Enter password",type='password',placeholder='Enter password')
     teacher_pass_confirm=st.text_input("Confirm password",type='password',placeholder='Enter password')
+    admin_code = st.text_input("Admin code",type='password',placeholder="Given by administrator")
     
     st.divider()
 
     btnc1,btnc2=st.columns(2)
     with btnc1:
         if st.button("Register Now",icon=':material/passkey:',shortcut='control+enter',width='stretch'):
-            success,message= register_teacher(teacher_username,teacher_name,teacher_pass,teacher_pass_confirm)
+            success,message= register_teacher(teacher_username,teacher_name,teacher_pass,teacher_pass_confirm,admin_code)
             if success:
                 st.success(message)
                 time.sleep(2)
