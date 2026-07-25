@@ -23,6 +23,8 @@ def main():
             teacher_screen()
             return
         elif st.session_state.get('user_role')=='student':
+            if join_code:
+                auto_enroll_dialog(join_code)
             student_screen()
             return
 
