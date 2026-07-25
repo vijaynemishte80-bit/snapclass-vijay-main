@@ -90,7 +90,7 @@ def predicted_attendance(class_image_np):
 
     all_students = sorted(list(set(y_train)))
 
-    resemblance_threshold = 0.5
+    resemblance_threshold = 0.45
 
     for encoding in encoddings:
         best_match_id = None
