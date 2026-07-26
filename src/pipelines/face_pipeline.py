@@ -1,5 +1,5 @@
 import dlib
-from sklearn.svm import  SVC
+# from sklearn.svm import  SVC
 import face_recognition_models
 import numpy as np
 import streamlit as st
@@ -58,16 +58,16 @@ def get_trained_model():
     if len(X) == 0:
         return 0
         
-    clf = SVC(kernel='linear',probability=True,class_weight='balanced')
+    # clf = SVC(kernel='linear',probability=True,class_weight='balanced')
     
 
-    try:
-        clf.fit(X,y)
-    except ValueError:
-        pass
+    # try:
+    #     clf.fit(X,y)
+    # except ValueError:
+    #     pass
 
-    return {'clf':clf, "X":X, "y":y}
-    # return {"X":X,"y":y}
+    # return {'clf':clf, "X":X, "y":y}
+    return {"X":X,"y":y}
 
 def train_classifier():
     st.cache_resource.clear()
@@ -84,7 +84,7 @@ def predicted_attendance(class_image_np):
     if not model_data:
         return detected_students, [], len(encoddings)
             
-    clf = model_data['clf']
+    # clf = model_data['clf']
     X_train = model_data['X']
     y_train = model_data['y']
 
@@ -93,33 +93,33 @@ def predicted_attendance(class_image_np):
     resemblance_threshold = 0.4
 
     for encoding in encoddings:
-        # best_match_id = None
-        # best_match_score = float('inf')
+        best_match_id = None
+        best_match_score = float('inf')
 
-        # for idx, student_embedding in enumerate(X_train):
-        #     score = np.linalg.norm(np.array(student_embedding) - encoding)
-        #     if score < best_match_score:
-        #         best_match_score = score
-        #         best_match_id = int(y_train[idx])
+        for idx, student_embedding in enumerate(X_train):
+            score = np.linalg.norm(np.array(student_embedding) - encoding)
+            if score < best_match_score:
+                best_match_score = score
+                best_match_id = int(y_train[idx])
 
-        # if best_match_id is not None and best_match_score <= resemblance_threshold:
-        #     detected_students[best_match_id] = True
+        if best_match_id is not None and best_match_score <= resemblance_threshold:
+            detected_students[best_match_id] = True
 
-        if len(all_students) >= 2:
-            predicted_id = int(clf.predict([encoding])[0])
-        else:
-            predicted_id = int(all_students[0])
+        # if len(all_students) >= 2:
+        #     predicted_id = int(clf.predict([encoding])[0])
+        # else:
+        #     predicted_id = int(all_students[0])
 
 
-        student_embedding =X_train[y_train.index(predicted_id)]
+        # student_embedding =X_train[y_train.index(predicted_id)]
 
-        best_match_score = np.linalg.norm(student_embedding - encoding)
+        # best_match_score = np.linalg.norm(student_embedding - encoding)
 
         
-        resemblance_threshold = 0.6
+        # resemblance_threshold = 0.6
 
-        if best_match_score <= resemblance_threshold:
-            detected_students[predicted_id] = True
+        # if best_match_score <= resemblance_threshold:
+        #     detected_students[predicted_id] = True
     return detected_students, all_students,len(encoddings) 
             
 
