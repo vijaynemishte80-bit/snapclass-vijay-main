@@ -4,7 +4,7 @@ from src.components.header import header_dashboard
 from src.components.footer import footer_dashboard
 from PIL import Image
 import numpy as np
-from src.pipelines.face_pipeline import predicted_attendance,get_face_embeddings,train_classifier
+from src.pipelines.face_pipeline import predicted_attendance_login,get_face_embeddings,train_classifier
 from src.pipelines.voice_pipeline import get_voice_embedding
 from src.database.db import get_all_students,create_student,get_students_subjects,get_student_attendance,unenroll_student_to_subject
 from src.components.dialog_enroll import enroll_dialog
@@ -117,7 +117,7 @@ def student_screen():
         img = np.array(Image.open(photo_source))
         
         with st.spinner('AI is scanning.....'):
-            detected,all_ids,num_face = predicted_attendance(img)
+            detected,all_ids,num_face = predicted_attendance_login(img)
 
             if num_face == 0:
                 st.warning('No face Found')
