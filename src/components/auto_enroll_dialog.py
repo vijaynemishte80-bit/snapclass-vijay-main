@@ -35,6 +35,7 @@ def auto_enroll_dialog(subject_code):
             enroll_student_to_subject(student_id,subject['subject_id'])
             st.success("Joined Successfully")
             time.sleep(1)
+            st.query_params.clear()
             st.rerun()
 
 
