@@ -34,8 +34,8 @@ def auto_enroll_dialog(subject_code):
         if st.button("Yes enroll now",type='primary',width='stretch'):
             enroll_student_to_subject(student_id,subject['subject_id'])
             st.success("Joined Successfully")
-            time.sleep(1)
             st.query_params.clear()
+            time.sleep(1)
             st.rerun()
 
 
